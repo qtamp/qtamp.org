@@ -76,6 +76,18 @@
   .heroshot{ margin-top:44px; }
   .heroshot img{ max-width:min(420px,88vw); height:auto; image-rendering:pixelated; filter:drop-shadow(0 18px 44px rgba(0,0,0,.75)) drop-shadow(0 0 30px rgba(255,170,51,.10)); }
   .heroshot figcaption{ color:var(--mut); font-size:.85rem; margin-top:12px; }
+  .playerbox{ position:relative; display:inline-block; }
+  .playerbox img{ display:block; }
+  .playbtn{
+    position:absolute; inset:0; margin:auto; width:max-content; height:max-content;
+    display:flex; align-items:center; gap:10px; padding:12px 20px; cursor:pointer;
+    background:rgba(10,10,10,.82); color:var(--amber); border:2px solid var(--amber);
+    border-radius:12px; font-size:.95rem; font-weight:600;
+    box-shadow:0 8px 30px rgba(0,0,0,.6), 0 0 24px rgba(255,170,51,.25);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .playbtn:hover{ transform:scale(1.04); box-shadow:0 10px 34px rgba(0,0,0,.7), 0 0 32px rgba(255,170,51,.4); }
+  .playerbox iframe{ image-rendering:pixelated; }
 
   section{ padding:76px 0 8px; }
   h2{ font-size:clamp(1.5rem,3.6vw,2.1rem); letter-spacing:.02em; margin-bottom:8px; }
@@ -152,10 +164,26 @@
       <a class="btn alt" href="#install">Install guide</a>
     </div>
 
-    <figure class="heroshot">
-      <img src="/assets/shots/modernpp-eq.png" width="354" height="280" alt="qtamp rendering the QTAMP-branded WinampModernPP skin with the EQ drawer open">
-      <figcaption>qtamp rendering <a href="https://github.com/qtamp/WinampModernPP">WinampModernPP</a>: a real Modern skin, drawer open, 10-band EQ live. Shot straight from the engine, transparent background and all.</figcaption>
+    <figure class="heroshot" id="heroplayer">
+      <div class="playerbox" id="playerbox">
+        <img src="/assets/shots/modernpp-eq.png" width="354" height="280" alt="qtamp rendering the QTAMP-branded WinampModernPP skin with the EQ drawer open">
+        <button class="playbtn" id="playbtn" onclick="startPlayer()" aria-label="Start the in-browser qtamp player">
+          <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <span>Run qtamp in your browser</span>
+        </button>
+      </div>
+      <figcaption>The real thing: qtamp compiled to WebAssembly, rendering <a href="https://github.com/qtamp/WinampModernPP">WinampModernPP</a> with a demo loop. Click to load (~a one-time download); or just enjoy the screenshot.</figcaption>
     </figure>
+    <script>
+      function startPlayer(){
+        var box=document.getElementById('playerbox');
+        var f=document.createElement('iframe');
+        f.src='/player/index.html'; f.title='qtamp in-browser player';
+        f.width='354'; f.height='280'; f.style.border='0'; f.style.display='block';
+        f.allow='autoplay';
+        box.replaceChildren(f);
+      }
+    </script>
   </div>
 </header>
 
