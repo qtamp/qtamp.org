@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>qtamp · the reference player for qtWasabi — Winamp Modern skins, faithfully</title>
+<meta name="description" content="qtamp is the reference media player for qtWasabi, a faithful open-source reimplementation of the Wasabi/Maki Modern skin engine that has driven Winamp since 2002. Not a Winamp clone: the real skin engine, running skins' own compiled Maki bytecode. Linux and macOS.">
+<meta property="og:site_name" content="qtamp">
+<meta property="og:title" content="qtamp · the reference player for qtWasabi">
+<meta property="og:description" content="A faithful reimplementation of the skin engine that drove Winamp since 2002. curl https://qtamp.sh | sh">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://qtamp.org/">
+<meta property="og:image" content="https://qtamp.org/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="qtamp">
+<meta name="twitter:description" content="The reference player for qtWasabi. curl https://qtamp.sh | sh">
+<meta name="twitter:image" content="https://qtamp.org/assets/og.png">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/svg+xml" href="/assets/qtamp.svg">
+<style>
+  :root{
+    --amber:#ffaa33; --amber-d:#cc7d11; --lcd:#54ff9f; --bg:#0a0a0a; --panel:#111111;
+    --panel2:#0e0e0e; --line:#222222; --line-w:#3a2c12; --txt:#ececec; --mut:#9a9a9a;
+    --bolt:linear-gradient(135deg,#ffd24a 0%,#ffaa33 45%,#f57c1f 100%);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--txt);
+    background:radial-gradient(1100px 700px at 50% -8%, #171310 0%, transparent 62%), var(--bg);
+    line-height:1.65; -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  body::before{ content:''; position:fixed; top:0; left:0; right:0; height:3px; background:var(--bolt); z-index:50; transform-origin:left center; animation:loadbar 1.1s cubic-bezier(.15,.75,.25,1) both; }
+  @keyframes loadbar{ from{ transform:scaleX(0);} to{ transform:scaleX(1);} }
+  @media (hover:none) and (pointer:coarse){ body::before{ position:absolute; } }
+  a{ color:var(--amber); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  .wrap{ max-width:1060px; margin:0 auto; padding:0 clamp(24px,5.5vw,60px); }
+  .mono{ font-family:ui-monospace,'JetBrains Mono','Cascadia Code',Menlo,Consolas,monospace; }
+
+  header{ min-height:92vh; display:flex; flex-direction:column; text-align:center; position:relative; padding:84px 0 40px; }
+  header > .wrap{ flex:1 1 auto; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .bolt{ width:88px; height:88px; filter:drop-shadow(0 0 26px rgba(255,170,51,.35)) drop-shadow(0 8px 26px #000c); }
+  .wordmark{
+    font-size:clamp(2.8rem,10vw,5.2rem); font-weight:800; letter-spacing:.14em; line-height:1;
+    margin:18px auto 0; padding:0 .1em; background:var(--bolt);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+    filter:drop-shadow(0 3px 12px #000a);
+  }
+  .tag{ font-size:clamp(1.05rem,2.4vw,1.4rem); margin-top:18px; font-weight:600; }
+  .sub{ color:var(--mut); max-width:660px; margin:12px auto 0; font-size:1.03rem; }
+  .sub b{ color:var(--txt); }
+
+  .curlbox{
+    margin:32px auto 0; display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;
+    background:#0c120c; border:1px solid #1d3323; border-radius:12px; padding:16px 22px;
+    box-shadow:0 6px 30px rgba(0,0,0,.5), inset 0 0 40px rgba(84,255,159,.04);
+  }
+  .curlbox code{ font-family:ui-monospace,Menlo,Consolas,monospace; font-size:clamp(.95rem,2.6vw,1.25rem); color:var(--lcd); text-shadow:0 0 10px rgba(84,255,159,.35); }
+  .curlbox code .p{ color:#3f7d55; }
+  .copy{ background:#152615; color:var(--lcd); border:1px solid #275a37; border-radius:8px; padding:7px 13px; cursor:pointer; font-size:.85rem; transition:background .15s; }
+  .copy:hover{ background:#1d331d; }
+  .plat{ margin-top:12px; color:var(--mut); font-size:.9rem; }
+  .plat b{ color:var(--txt); font-weight:600; }
+
+  .cta{ margin-top:30px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:13px 26px; border-radius:12px; font-size:1rem; font-weight:600; transition:transform .15s, box-shadow .15s, border-color .15s; }
+  .btn:hover{ text-decoration:none; transform:translateY(-2px); }
+  .btn.primary{ background:var(--amber); color:#221400; border:2px solid var(--amber); box-shadow:0 6px 24px rgba(255,170,51,.22); }
+  .btn.primary:hover{ box-shadow:0 10px 30px rgba(255,170,51,.34); background:#ffbb55; }
+  .btn.alt{ background:transparent; color:var(--txt); border:2px solid var(--line); }
+  .btn.alt:hover{ border-color:var(--amber); color:var(--amber); }
+
+  .heroshot{ margin-top:44px; }
+  .heroshot img{ max-width:min(420px,88vw); height:auto; image-rendering:pixelated; filter:drop-shadow(0 18px 44px rgba(0,0,0,.75)) drop-shadow(0 0 30px rgba(255,170,51,.10)); }
+  .heroshot figcaption{ color:var(--mut); font-size:.85rem; margin-top:12px; }
+
+  section{ padding:76px 0 8px; }
+  h2{ font-size:clamp(1.5rem,3.6vw,2.1rem); letter-spacing:.02em; margin-bottom:8px; }
+  h2 .hash{ color:var(--amber-d); margin-right:10px; }
+  .lead{ color:var(--mut); max-width:760px; margin-bottom:26px; }
+  .lead b, .lead strong{ color:var(--txt); }
+
+  .grid{ display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+  .card{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; }
+  .card h3{ font-size:1.05rem; margin-bottom:8px; color:var(--amber); }
+  .card p{ color:var(--mut); font-size:.95rem; }
+  .card p b{ color:var(--txt); }
+
+  .gallery{ display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); align-items:start; }
+  .gallery figure{ background:repeating-conic-gradient(#161616 0% 25%, #101010 0% 50%) 0 0/22px 22px; border:1px solid var(--line); border-radius:14px; padding:26px 18px 14px; text-align:center; }
+  .gallery img{ max-width:100%; height:auto; image-rendering:pixelated; filter:drop-shadow(0 10px 26px rgba(0,0,0,.7)); }
+  .gallery figcaption{ color:var(--mut); font-size:.88rem; margin-top:12px; line-height:1.5; }
+  .gallery figcaption b{ color:var(--txt); }
+
+  .note{ background:#14100a; border:1px solid var(--line-w); border-left:3px solid var(--amber); border-radius:10px; padding:14px 18px; color:var(--mut); font-size:.93rem; margin-top:20px; }
+  .note b{ color:var(--txt); }
+
+  .install .os{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px; margin-top:18px; }
+  .install h3{ color:var(--amber); font-size:1.1rem; margin-bottom:10px; }
+  .install ol{ margin:10px 0 6px 22px; color:var(--mut); }
+  .install li{ margin:7px 0; }
+  .install li b{ color:var(--txt); }
+  pre{ background:#0c0f0c; border:1px solid #1c2a1e; border-radius:10px; padding:14px 16px; overflow-x:auto; margin:10px 0; }
+  pre code{ font-family:ui-monospace,Menlo,Consolas,monospace; font-size:.88rem; color:var(--lcd); }
+  pre code .c{ color:#4d7a58; }
+
+  .road{ margin-top:16px; border-left:2px solid var(--line-w); padding-left:24px; }
+  .road .step{ position:relative; padding:0 0 26px; }
+  .road .step::before{ content:''; position:absolute; left:-31px; top:7px; width:12px; height:12px; border-radius:50%; background:var(--amber); box-shadow:0 0 12px rgba(255,170,51,.6); }
+  .road .step.dim::before{ background:#3a3a3a; box-shadow:none; }
+  .road h3{ font-size:1.02rem; }
+  .road p{ color:var(--mut); font-size:.93rem; max-width:720px; }
+  .road p b{ color:var(--txt); }
+
+  .people{ display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+  .person{ display:flex; gap:16px; align-items:center; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
+  .person img{ width:64px; height:64px; border-radius:50%; border:2px solid var(--line-w); }
+  .person .who b{ display:block; color:var(--txt); }
+  .person .who span{ color:var(--mut); font-size:.88rem; display:block; line-height:1.45; }
+  .person .who a{ font-size:.85rem; }
+
+  footer{ margin-top:80px; border-top:1px solid var(--line); padding:34px 0 46px; color:var(--mut); font-size:.9rem; }
+  footer .wrap{ display:flex; gap:18px; flex-wrap:wrap; justify-content:space-between; align-items:center; }
+  footer nav{ display:flex; gap:18px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <svg class="bolt" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd24a"/><stop offset=".45" stop-color="#ffaa33"/><stop offset="1" stop-color="#f57c1f"/></linearGradient></defs><path fill="url(#g)" d="M38 2 10 36h14L26 62 54 26H40L38 2z"/></svg>
+    <div class="wordmark">QTAMP</div>
+    <p class="tag">The reference player for qtWasabi</p>
+    <p class="sub"><b>Not a Winamp clone.</b> qtamp is the reference implementation of
+      <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi</a> — a faithful, open-source
+      reimplementation of the original Wasabi/Maki skin engine that has driven Winamp since
+      <b>2002</b>. Skins are programs; qtWasabi runs their own compiled Maki bytecode on the
+      original VM.</p>
+
+    <div class="curlbox">
+      <code id="curlcmd"><span class="p">$</span> curl https://qtamp.sh | sh</code>
+      <button class="copy" onclick="navigator.clipboard.writeText('curl https://qtamp.sh | sh').then(()=>{this.textContent='copied!';setTimeout(()=>this.textContent='copy',1400)})">copy</button>
+    </div>
+    <p class="plat">Builds from source on <b>Linux</b> (Fedora · Debian/Ubuntu · Arch · openSUSE) and <b>macOS</b> (Apple Silicon). <b>Windows:</b> sometime in the future.</p>
+
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/qtamp/qtamp">GitHub</a>
+      <a class="btn alt" href="https://github.com/qtamp/qtamp/issues">Issue tracker</a>
+      <a class="btn alt" href="#install">Install guide</a>
+    </div>
+
+    <figure class="heroshot">
+      <img src="/assets/shots/modernpp-eq.png" width="354" height="280" alt="qtamp rendering the QTAMP-branded WinampModernPP skin with the EQ drawer open">
+      <figcaption>qtamp rendering <a href="https://github.com/qtamp/WinampModernPP">WinampModernPP</a> — a real Modern skin, drawer open, 10-band EQ live. Shot straight from the engine, transparent background and all.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <h2><span class="hash">#</span>What is qtWasabi?</h2>
+    <p class="lead">
+      In 2002, Winamp3 introduced <b>Wasabi</b>: a skinnable UI engine where a skin is not a bitmap
+      theme but a <b>program</b> — XML declares the widget tree, and compiled <b>Maki bytecode</b>
+      drives its behaviour. Drawers slide, tabs switch, windows reshape, tickers scroll — all scripted
+      by the skin itself. Winamp 5 carried this engine forward as “Modern skins” (<span class="mono">.wal</span>),
+      and thousands of them were built.
+    </p>
+    <p class="lead">
+      <b>qtWasabi</b> reimplements that engine, faithfully, on Qt6 — and it executes each skin's own
+      original Maki bytecode on the original Maki VM. The goal is absolute: <b>every skin ever built for
+      the original Winamp, and every skin yet to be built for it, must render correctly.</b> No per-skin
+      hacks; the engine is fixed, never the skin. <b>qtamp</b> is the reference media player proving it:
+      a real player (FLAC/MP3/OGG/Opus, 10-band EQ DSP, playlists, a DuckDB-indexed media library,
+      projectM visualization, MPRIS2) whose entire UI is whatever skin you load.
+    </p>
+    <div class="grid">
+      <div class="card"><h3>The original VM</h3><p>Skins ship compiled <span class="mono">.maki</span> binaries. qtWasabi runs them on the original interpreter — the skin's own logic drives the UI, exactly as it did in 2002.</p></div>
+      <div class="card"><h3>Engine, not clone</h3><p>qtamp doesn't imitate Winamp's look. It embeds qtWasabi behind one small <span class="mono">Host</span> interface; any app can do the same and get every Modern skin for free.</p></div>
+      <div class="card"><h3>Honest fidelity</h3><p>Thousands of shipped skins are the spec and the test corpus. What renders wrong is an engine bug, tracked openly in the <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">fidelity audit</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <h2><span class="hash">#</span>It actually works</h2>
+    <p class="lead">Live renders of the <a href="https://github.com/qtamp/WinampModernPP">QTAMP-branded WinampModernPP</a> skin (MIT, by Eris Lund). The drawers open and close, the EQ is a real 10-band DSP, the playlist editor is the skin's own.</p>
+    <div class="gallery">
+      <figure>
+        <img src="/assets/shots/modernpp-eq.png" width="354" height="280" alt="Config drawer open with the equalizer tab active">
+        <figcaption><b>Drawer open — EQ live.</b> The config drawer, its EQUALIZER / OPTIONS / COLOR THEMES tabs, and the 10-band equalizer feeding a real biquad DSP chain.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/shots/modernpp-drawer-closed.png" width="354" height="164" alt="Player with the config drawer closed">
+        <figcaption><b>Drawer closed.</b> Same skin, drawer tucked away — the window resizes with it, exactly like the original engine.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/shots/playlist-editor.png" width="437" height="164" alt="The skin's playlist editor window">
+        <figcaption><b>The real playlist editor.</b> Not a lookalike widget: the skin's own PLEDIT window rendered by the engine, playing an actual playlist.</figcaption>
+      </figure>
+    </div>
+    <p class="note"><b>macOS screenshots are coming.</b> qtamp already builds and runs on Apple Silicon Macs (the installer below does it end-to-end); press shots from macOS will join this gallery soon. More skins join the gallery as they pass the <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">fidelity corpus</a> — we only show what already renders exactly as its author intended.</p>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2><span class="hash">#</span>Install</h2>
+    <p class="lead">One line on either platform — it builds everything from source and tells you what it's doing. Prefer to read first? <a href="https://github.com/qtamp/qtamp/blob/main/scripts/install.sh">The script is right here.</a></p>
+
+    <div class="os">
+      <h3>Linux (Fedora · Debian/Ubuntu · Arch · openSUSE)</h3>
+      <pre><code>curl https://qtamp.sh | sh</code></pre>
+      <ol>
+        <li>Installs the toolchain + Qt6 via <b>your distro's package manager</b> (dnf / apt / pacman / zypper) — the only step that asks for sudo.</li>
+        <li>Clones <span class="mono">qtamp/qtamp</span> with the <span class="mono">qtWasabi</span> engine submodule into <span class="mono">~/.cache/qtamp-build</span>.</li>
+        <li>Fetches the Wasabi source tree from the public <b>archive.org</b> mirror (your own copy, see <a href="#license">licensing</a>).</li>
+        <li>Builds with CMake/Ninja and installs to <span class="mono">/usr/local</span>. Run it with <span class="mono">qtamp</span>.</li>
+      </ol>
+      <p style="color:var(--mut);font-size:.9rem">Manual build instead: <span class="mono">git clone --recursive https://github.com/qtamp/qtamp && cd qtamp && deps/qtWasabi/scripts/fetch-wasabi.sh && cmake -B build -DQTAMP_USE_QTWASABI=ON && cmake --build build</span></p>
+    </div>
+
+    <div class="os">
+      <h3>macOS (Apple Silicon)</h3>
+      <pre><code>curl https://qtamp.sh | sh</code></pre>
+      <ol>
+        <li>Detects macOS and hands off to the <a href="https://github.com/qtamp/qtamp/blob/main/scripts/install-macos.sh">.app installer</a>.</li>
+        <li>Provisions Xcode Command Line Tools and <b>Homebrew</b> (cmake, ninja, Qt6) if missing.</li>
+        <li>Clones the repos, fetches the Wasabi tree from archive.org, builds, and bundles a proper <span class="mono">qtamp.app</span> with <span class="mono">macdeployqt</span>.</li>
+        <li>Installs into <b>/Applications</b> — launch qtamp from Spotlight like any app.</li>
+      </ol>
+    </div>
+
+    <div class="os">
+      <h3>Windows</h3>
+      <p style="color:var(--mut)">Coming sometime in the future. The engine is plain Qt6/C++ with no platform tricks, so a port is a matter of build plumbing, not architecture — but we'd rather nail fidelity first. Follow the <a href="https://github.com/qtamp/qtamp/issues">issue tracker</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <h2><span class="hash">#</span>Roadmap</h2>
+    <p class="lead">One goal governs everything: <b>every skin ever built for the original Winamp — and every skin yet to be built — rendered correctly by the original Maki VM.</b> The full audited plan lives in the <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">qtWasabi OKF bundle</a>; this is the shape of it, in priority order.</p>
+    <div class="road">
+      <div class="step"><h3>Maki object model &amp; dispatch</h3><p>Restore the typed class layer around the original interpreter — real object construction, per-class method dispatch, safe arity. The keystone every other workstream leans on.</p></div>
+      <div class="step"><h3>Full event surface</h3><p>Every mouse, keyboard, and lifecycle event a real Wasabi engine dispatches reaches the skin's scripts — so script-driven skins are fully interactive with zero engine-side imitations.</p></div>
+      <div class="step"><h3>One state store + real Config service</h3><p>Skins' own scripts decide drawer, tab, and preference state; the last hardcoded assumptions about specific skins get deleted.</p></div>
+      <div class="step"><h3>Containers, layouts &amp; window sizing</h3><p>Multi-window and multi-layout skins (shade modes included) navigate exactly as authored; window size comes from the skin's scripts, not heuristics.</p></div>
+      <div class="step"><h3>Geometry &amp; paint fidelity</h3><p>The reference frame-constraint model, exact coordinate semantics, exact font metrics and color/gamma theming — pixel-for-pixel against original Winamp.</p></div>
+      <div class="step"><h3>Widget completion</h3><p>Every placeholder becomes a faithful interpretation: scrollbars, popup menus, dropdowns, text entry, animated layers, the full media library.</p></div>
+      <div class="step dim"><h3>Corpus verification — continuous</h3><p>Real skins are the regression suite, diffed against their authors' own reference screenshots. Today <b>1 of 5</b> corpus skins renders pixel-faithfully (WinampModernPP); the other four are open engine bugs, tracked per skin in <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">corpus-status</a>. This gate never closes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="license">
+  <div class="wrap">
+    <h2><span class="hash">#</span>Licensing &amp; provenance</h2>
+    <p class="lead">Everything we wrote is MIT. What we didn't write, we don't ship.</p>
+    <div class="grid">
+      <div class="card"><h3>qtamp &amp; qtWasabi — MIT</h3><p>Both repositories (<a href="https://github.com/qtamp/qtamp">qtamp/qtamp</a>, <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi/qtWasabi</a>) are MIT-licensed, with <b>no Winamp-licensed source in the repos or their git history</b>.</p></div>
+      <div class="card"><h3>Original Winamp files — user-supplied</h3><p>A small set of original Wasabi engine sources is required at <b>build time</b>. The installer fetches them from the public <b>archive.org</b> mirror of the official source release — into a gitignored directory, on your machine, under the <b>Winamp Collaborative License v1.0</b> (§3 permits using covered works you do not convey). They are never redistributed by us — the same pattern emulators use for a user-supplied BIOS.</p></div>
+      <div class="card"><h3>Showcase skins — MIT</h3><p>Every skin shown on this site is MIT-licensed by its author and forked with credit into <a href="https://github.com/qtamp">github.com/qtamp</a> (only titlebar branding strings changed). We deliberately don't showcase proprietary Nullsoft skins.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="thanks">
+  <div class="wrap">
+    <h2><span class="hash">#</span>Thanks</h2>
+    <p class="lead">qtamp stands on the shoulders of people who cared about this software long before us.</p>
+    <div class="people">
+      <div class="person">
+        <img src="https://avatars.githubusercontent.com/u/1328108?v=4" alt="lord3nd3r's avatar" loading="lazy">
+        <div class="who"><b>Kristopher Craig (lord3nd3r)</b>
+          <span>Author of <a href="https://github.com/lord3nd3r/winamp-linux">winamp-linux</a>, the native Qt port qtamp grew out of — and the person who said <a href="https://github.com/lord3nd3r/winamp-linux/issues/3">“make the Modern skins work”</a>. This project is that issue, taken seriously.</span>
+        </div>
+      </div>
+      <div class="person">
+        <img src="https://avatars.githubusercontent.com/u/38136789?v=4" alt="0x5066's avatar" loading="lazy">
+        <div class="who"><b>Eris Lund (0x5066)</b>
+          <span>Skin author and Wasabi archaeologist whose <b>MIT-licensed skins</b> (<a href="https://github.com/0x5066/WinampModernPP">WinampModernPP</a> and family) make an honest showcase possible — and whose skinning documentation keeps this knowledge alive.</span>
+        </div>
+      </div>
+    </div>
+    <h2 style="margin-top:54px"><span class="hash">#</span>Contributors</h2>
+    <div class="people" style="margin-top:18px">
+      <div class="person">
+        <img src="https://avatars.githubusercontent.com/u/26285351?v=4" alt="kleberbaum's avatar" loading="lazy">
+        <div class="who"><b>Florian Kleber (kleberbaum)</b><span>qtWasabi engine &amp; qtamp — <a href="https://github.com/kleberbaum">github.com/kleberbaum</a></span></div>
+      </div>
+      <div class="person">
+        <img src="https://avatars.githubusercontent.com/u/1328108?v=4" alt="lord3nd3r's avatar" loading="lazy">
+        <div class="who"><b>Kristopher Craig (lord3nd3r)</b><span>winamp-linux foundation — <a href="https://github.com/lord3nd3r">github.com/lord3nd3r</a></span></div>
+      </div>
+    </div>
+    <p class="note">Want your face here? The engine has one rule — <b>fix the engine, never the skin</b> — and a very honest <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">list of what's left to do</a>. Bugs, skins that render wrong, and PRs: <a href="https://github.com/qtamp/qtamp/issues">github.com/qtamp/qtamp/issues</a>.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Florian Kleber &amp; contributors · MIT · qtamp is not affiliated with Winamp LLC. Winamp is a trademark of its owner.</div>
+    <nav>
+      <a href="https://github.com/qtamp/qtamp">qtamp</a>
+      <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi</a>
+      <a href="https://github.com/qtamp/qtamp/issues">Issues</a>
+      <a href="https://github.com/qtamp">Skins</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

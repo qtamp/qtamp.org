@@ -1,0 +1,8 @@
+#!/bin/sh
+# qtamp bootstrap — https://qtamp.org
+# This fetches and runs the real installer, versioned in the qtamp repo:
+#   https://github.com/qtamp/qtamp/blob/main/scripts/install.sh
+# Read it first if you like:  curl -fsSL https://qtamp.sh | less
+set -eu
+echo "==> qtamp installer (https://qtamp.org)"
+exec /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/qtamp/qtamp/main/scripts/install.sh)"
