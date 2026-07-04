@@ -170,7 +170,7 @@
       <code id="curlcmd"><span class="p">$</span> curl https://qtamp.sh | sh</code>
       <button class="copy" onclick="navigator.clipboard.writeText('curl https://qtamp.sh | sh').then(()=>{this.textContent='copied!';setTimeout(()=>this.textContent='copy',1400)})">copy</button>
     </div>
-    <p class="plat">Builds from source on <b>Linux</b> (Fedora · Debian/Ubuntu · Arch · openSUSE) and <b>macOS</b> (Apple Silicon). <b>Windows:</b> sometime in the future.</p>
+    <p class="plat">Runs on <b>Linux</b> (Fedora · Debian/Ubuntu · Arch · openSUSE), <b>macOS</b> (Apple Silicon) and in <b>Chromium (WebAssembly)</b>, right on this page. <b>Windows:</b> sometime in the future.</p>
 
     <div class="cta">
       <a class="btn primary" href="https://github.com/qtamp/qtamp">GitHub</a>
@@ -324,6 +324,15 @@
         <li>Provisions Xcode Command Line Tools and <b>Homebrew</b> (cmake, ninja, Qt6) if missing.</li>
         <li>Clones the repos, fetches the Wasabi tree from archive.org, builds, and bundles a proper <span class="mono">qtamp.app</span> with <span class="mono">macdeployqt</span>.</li>
         <li>Installs into <b>/Applications</b>, so you can launch qtamp from Spotlight like any app.</li>
+      </ol>
+    </div>
+
+    <div class="os">
+      <h3>Browser (Chromium, WebAssembly)</h3>
+      <pre><code>curl https://qtamp.sh | sh -s -- --wasm</code></pre>
+      <ol>
+        <li>Nothing to install for listening: the hero of this page runs the real player, compiled to WebAssembly, in Chromium-based browsers.</li>
+        <li>The one-liner above builds it yourself: same script, same checkout, built inside the published <a href="https://github.com/qtamp/qtamp-wasm-builder">qtamp-wasm-builder</a> toolchain image (needs Docker). The deployable player lands in <span class="mono">build-wasm/dist</span>.</li>
       </ol>
     </div>
 
