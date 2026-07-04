@@ -1,2 +1,8 @@
 /assets/*
   Cache-Control: public, max-age=86400
+
+# The player's js glue and wasm binary come from one link run and must
+# never mix across deployments: revalidate on every load (304 when
+# unchanged, so the 25 MB is not re-downloaded).
+/player/*
+  Cache-Control: no-cache
