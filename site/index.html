@@ -202,8 +202,45 @@
         <img src="/assets/shots/playlist-editor.png" width="437" height="164" alt="The skin's playlist editor window">
         <figcaption><b>The real playlist editor.</b> Not a lookalike widget: the skin's own PLEDIT window rendered by the engine, playing an actual playlist.</figcaption>
       </figure>
+      <figure style="grid-column:1/-1">
+        <img src="/assets/shots/ml-window.png" alt="The Media Library window listing real artists, albums and tracks">
+        <figcaption><b>The Media Library, with your actual music.</b> Artist → album → track drill-down, live filtering, double-click to play — backed by a DuckDB + Parquet index qtamp builds from your music folder's tags.</figcaption>
+      </figure>
     </div>
-    <p class="note"><b>macOS screenshots are coming.</b> qtamp already builds and runs on Apple Silicon Macs (the installer below does it end-to-end); press shots from macOS will join this gallery soon. More skins join the gallery as they pass the <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">fidelity corpus</a> — we only show what already renders exactly as its author intended.</p>
+    <p class="note"><b>macOS screenshots are coming.</b> qtamp already builds and runs on Apple Silicon Macs (the installer below does it end-to-end); press shots from macOS — plus the visualizer and preferences windows — will join this gallery soon. More skins join as they pass the <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">fidelity corpus</a> — we only show what already renders exactly as its author intended.</p>
+  </div>
+</section>
+
+<section id="colors">
+  <div class="wrap">
+    <h2><span class="hash">#</span>Color themes — real and synthetic</h2>
+    <p class="lead">
+      Modern skins ship <b>color presets</b>: gammaset tables that re-tint every element group of the
+      skin's art at runtime. qtWasabi implements the original engine's gamma pipeline
+      <b>byte-for-byte</b> — the same integer math Winamp's GammaFilter used — so a skin's presets
+      look exactly as authored. One skin, many faces:
+    </p>
+    <div class="gallery">
+      <figure>
+        <img src="/assets/shots/theme-goodolwinamp.png" width="354" height="280" alt="WinampModernPP in the Good Ol' Winamp color theme">
+        <figcaption><b>“Good Ol' Winamp”</b> — the skin's classic silver-blue preset.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/shots/theme-blues.png" width="354" height="280" alt="WinampModernPP in the Blues color theme">
+        <figcaption><b>“Blues”</b> — the same art, re-tinted live by the gammaset engine.</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/shots/theme-halloween.png" width="354" height="280" alt="WinampModernPP in the Halloween color theme">
+        <figcaption><b>“Halloween”</b> — every element group follows its own gamma curve, exactly as the skin author tuned it.</figcaption>
+      </figure>
+    </div>
+    <p class="lead" style="margin-top:26px">
+      And for skins that ship <b>no presets at all</b>, qtWasabi can go further: it analyzes the
+      skin's structure, assigns color roles to its element groups, and <b>synthesizes color themes</b>
+      the author never shipped — an engine feature, applied generically, never baked per skin. Skins
+      with their own presets are always rendered exactly as authored; synthesis is strictly opt-in
+      for the ones without.
+    </p>
   </div>
 </section>
 
