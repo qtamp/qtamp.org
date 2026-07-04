@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>qtamp · the reference player for qtWasabi — Winamp Modern skins, faithfully</title>
+<title>qtamp · the reference player for qtWasabi, rendering Winamp Modern skins faithfully</title>
 <meta name="description" content="qtamp is the reference media player for qtWasabi, a faithful open-source reimplementation of the Wasabi/Maki Modern skin engine that has driven Winamp since 2002. Not a Winamp clone: the real skin engine, running skins' own compiled Maki bytecode. Linux and macOS.">
 <meta property="og:site_name" content="qtamp">
 <meta property="og:title" content="qtamp · the reference player for qtWasabi">
@@ -135,7 +135,7 @@
     <div class="wordmark">QTAMP</div>
     <p class="tag">The reference player for qtWasabi</p>
     <p class="sub"><b>Not a Winamp clone.</b> qtamp is the reference implementation of
-      <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi</a> — a faithful, open-source
+      <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi</a>, a faithful open-source
       reimplementation of the original Wasabi/Maki skin engine that has driven Winamp since
       <b>2002</b>. Skins are programs; qtWasabi runs their own compiled Maki bytecode on the
       original VM.</p>
@@ -154,7 +154,7 @@
 
     <figure class="heroshot">
       <img src="/assets/shots/modernpp-eq.png" width="354" height="280" alt="qtamp rendering the QTAMP-branded WinampModernPP skin with the EQ drawer open">
-      <figcaption>qtamp rendering <a href="https://github.com/qtamp/WinampModernPP">WinampModernPP</a> — a real Modern skin, drawer open, 10-band EQ live. Shot straight from the engine, transparent background and all.</figcaption>
+      <figcaption>qtamp rendering <a href="https://github.com/qtamp/WinampModernPP">WinampModernPP</a>: a real Modern skin, drawer open, 10-band EQ live. Shot straight from the engine, transparent background and all.</figcaption>
     </figure>
   </div>
 </header>
@@ -164,13 +164,13 @@
     <h2><span class="hash">#</span>What is qtWasabi?</h2>
     <p class="lead">
       In 2002, Winamp3 introduced <b>Wasabi</b>: a skinnable UI engine where a skin is not a bitmap
-      theme but a <b>program</b> — XML declares the widget tree, and compiled <b>Maki bytecode</b>
-      drives its behaviour. Drawers slide, tabs switch, windows reshape, tickers scroll — all scripted
+      theme but a <b>program</b>. XML declares the widget tree, and compiled <b>Maki bytecode</b>
+      drives its behaviour. Drawers slide, tabs switch, windows reshape, tickers scroll, all scripted
       by the skin itself. Winamp 5 carried this engine forward as “Modern skins” (<span class="mono">.wal</span>),
       and thousands of them were built.
     </p>
     <p class="lead">
-      <b>qtWasabi</b> reimplements that engine, faithfully, on Qt6 — and it executes each skin's own
+      <b>qtWasabi</b> reimplements that engine faithfully on Qt6, and it executes each skin's own
       original Maki bytecode on the original Maki VM. The goal is absolute: <b>every skin ever built for
       the original Winamp, and every skin yet to be built for it, must render correctly.</b> No per-skin
       hacks; the engine is fixed, never the skin. <b>qtamp</b> is the reference media player proving it:
@@ -178,7 +178,7 @@
       projectM visualization, MPRIS2) whose entire UI is whatever skin you load.
     </p>
     <div class="grid">
-      <div class="card"><h3>The original VM</h3><p>Skins ship compiled <span class="mono">.maki</span> binaries. qtWasabi runs them on the original interpreter — the skin's own logic drives the UI, exactly as it did in 2002.</p></div>
+      <div class="card"><h3>The original VM</h3><p>Skins ship compiled <span class="mono">.maki</span> binaries. qtWasabi runs them on the original interpreter, so the skin's own logic drives the UI exactly as it did in 2002.</p></div>
       <div class="card"><h3>Engine, not clone</h3><p>qtamp doesn't imitate Winamp's look. It embeds qtWasabi behind one small <span class="mono">Host</span> interface; any app can do the same and get every Modern skin for free.</p></div>
       <div class="card"><h3>Honest fidelity</h3><p>Thousands of shipped skins are the spec and the test corpus. What renders wrong is an engine bug, tracked openly in the <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">fidelity audit</a>.</p></div>
     </div>
@@ -192,11 +192,11 @@
     <div class="gallery">
       <figure>
         <img src="/assets/shots/modernpp-eq.png" width="354" height="280" alt="Config drawer open with the equalizer tab active">
-        <figcaption><b>Drawer open — EQ live.</b> The config drawer, its EQUALIZER / OPTIONS / COLOR THEMES tabs, and the 10-band equalizer feeding a real biquad DSP chain.</figcaption>
+        <figcaption><b>Drawer open, EQ live.</b> The config drawer, its EQUALIZER / OPTIONS / COLOR THEMES tabs, and the 10-band equalizer feeding a real biquad DSP chain.</figcaption>
       </figure>
       <figure>
         <img src="/assets/shots/modernpp-drawer-closed.png" width="354" height="164" alt="Player with the config drawer closed">
-        <figcaption><b>Drawer closed.</b> Same skin, drawer tucked away — the window resizes with it, exactly like the original engine.</figcaption>
+        <figcaption><b>Drawer closed.</b> Same skin with the drawer tucked away. The window resizes with it, exactly like the original engine.</figcaption>
       </figure>
       <figure>
         <img src="/assets/shots/playlist-editor.png" width="437" height="164" alt="The skin's playlist editor window">
@@ -204,40 +204,40 @@
       </figure>
       <figure style="grid-column:1/-1">
         <img src="/assets/shots/ml-window.png" alt="The Media Library window listing real artists, albums and tracks">
-        <figcaption><b>The Media Library, with your actual music.</b> Artist → album → track drill-down, live filtering, double-click to play — backed by a DuckDB + Parquet index qtamp builds from your music folder's tags.</figcaption>
+        <figcaption><b>The Media Library, with your actual music.</b> Artist → album → track drill-down, live filtering, double-click to play. Behind it sits a DuckDB + Parquet index qtamp builds from your music folder's tags.</figcaption>
       </figure>
     </div>
-    <p class="note"><b>macOS screenshots are coming.</b> qtamp already builds and runs on Apple Silicon Macs (the installer below does it end-to-end); press shots from macOS — plus the visualizer and preferences windows — will join this gallery soon. More skins join as they pass the <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">fidelity corpus</a> — we only show what already renders exactly as its author intended.</p>
+    <p class="note"><b>macOS screenshots are coming.</b> qtamp already builds and runs on Apple Silicon Macs (the installer below does it end-to-end); press shots from macOS, plus the visualizer and preferences windows, will join this gallery soon. More skins join as they pass the <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">fidelity corpus</a>. We only show what already renders exactly as its author intended.</p>
   </div>
 </section>
 
 <section id="colors">
   <div class="wrap">
-    <h2><span class="hash">#</span>Color themes — real and synthetic</h2>
+    <h2><span class="hash">#</span>Color themes, real and synthetic</h2>
     <p class="lead">
       Modern skins ship <b>color presets</b>: gammaset tables that re-tint every element group of the
       skin's art at runtime. qtWasabi implements the original engine's gamma pipeline
-      <b>byte-for-byte</b> — the same integer math Winamp's GammaFilter used — so a skin's presets
+      <b>byte-for-byte</b>, with the same integer math Winamp's GammaFilter used, so a skin's presets
       look exactly as authored. One skin, many faces:
     </p>
     <div class="gallery">
       <figure>
         <img src="/assets/shots/theme-goodolwinamp.png" width="354" height="280" alt="WinampModernPP in the Good Ol' Winamp color theme">
-        <figcaption><b>“Good Ol' Winamp”</b> — the skin's classic silver-blue preset.</figcaption>
+        <figcaption><b>“Good Ol' Winamp”</b>: the skin's classic silver-blue preset.</figcaption>
       </figure>
       <figure>
         <img src="/assets/shots/theme-blues.png" width="354" height="280" alt="WinampModernPP in the Blues color theme">
-        <figcaption><b>“Blues”</b> — the same art, re-tinted live by the gammaset engine.</figcaption>
+        <figcaption><b>“Blues”</b>: the same art, re-tinted live by the gammaset engine.</figcaption>
       </figure>
       <figure>
         <img src="/assets/shots/theme-halloween.png" width="354" height="280" alt="WinampModernPP in the Halloween color theme">
-        <figcaption><b>“Halloween”</b> — every element group follows its own gamma curve, exactly as the skin author tuned it.</figcaption>
+        <figcaption><b>“Halloween”</b>: every element group follows its own gamma curve, exactly as the skin author tuned it.</figcaption>
       </figure>
     </div>
     <p class="lead" style="margin-top:26px">
       And for skins that ship <b>no presets at all</b>, qtWasabi can go further: it analyzes the
       skin's structure, assigns color roles to its element groups, and <b>synthesizes color themes</b>
-      the author never shipped — an engine feature, applied generically, never baked per skin. Skins
+      the author never shipped. This is an engine feature, applied generically, never baked per skin. Skins
       with their own presets are always rendered exactly as authored; synthesis is strictly opt-in
       for the ones without.
     </p>
@@ -247,13 +247,13 @@
 <section id="install">
   <div class="wrap">
     <h2><span class="hash">#</span>Install</h2>
-    <p class="lead">One line on either platform — it builds everything from source and tells you what it's doing. Prefer to read first? <a href="https://github.com/qtamp/qtamp/blob/main/scripts/install.sh">The script is right here.</a></p>
+    <p class="lead">One line on either platform. It builds everything from source and tells you what it's doing. Prefer to read first? <a href="https://github.com/qtamp/qtamp/blob/main/scripts/install.sh">The script is right here.</a></p>
 
     <div class="os">
       <h3>Linux (Fedora · Debian/Ubuntu · Arch · openSUSE)</h3>
       <pre><code>curl https://qtamp.sh | sh</code></pre>
       <ol>
-        <li>Installs the toolchain + Qt6 via <b>your distro's package manager</b> (dnf / apt / pacman / zypper) — the only step that asks for sudo.</li>
+        <li>Installs the toolchain + Qt6 via <b>your distro's package manager</b> (dnf / apt / pacman / zypper). This is the only step that asks for sudo.</li>
         <li>Clones <span class="mono">qtamp/qtamp</span> with the <span class="mono">qtWasabi</span> engine submodule into <span class="mono">~/.cache/qtamp-build</span>.</li>
         <li>Fetches the Wasabi source tree from the public <b>archive.org</b> mirror (your own copy, see <a href="#license">licensing</a>).</li>
         <li>Builds with CMake/Ninja and installs to <span class="mono">/usr/local</span>. Run it with <span class="mono">qtamp</span>.</li>
@@ -268,13 +268,13 @@
         <li>Detects macOS and hands off to the <a href="https://github.com/qtamp/qtamp/blob/main/scripts/install-macos.sh">.app installer</a>.</li>
         <li>Provisions Xcode Command Line Tools and <b>Homebrew</b> (cmake, ninja, Qt6) if missing.</li>
         <li>Clones the repos, fetches the Wasabi tree from archive.org, builds, and bundles a proper <span class="mono">qtamp.app</span> with <span class="mono">macdeployqt</span>.</li>
-        <li>Installs into <b>/Applications</b> — launch qtamp from Spotlight like any app.</li>
+        <li>Installs into <b>/Applications</b>, so you can launch qtamp from Spotlight like any app.</li>
       </ol>
     </div>
 
     <div class="os">
       <h3>Windows</h3>
-      <p style="color:var(--mut)">Coming sometime in the future. The engine is plain Qt6/C++ with no platform tricks, so a port is a matter of build plumbing, not architecture — but we'd rather nail fidelity first. Follow the <a href="https://github.com/qtamp/qtamp/issues">issue tracker</a>.</p>
+      <p style="color:var(--mut)">Coming sometime in the future. The engine is plain Qt6/C++ with no platform tricks, so a port is a matter of build plumbing, not architecture. We'd rather nail fidelity first. Follow the <a href="https://github.com/qtamp/qtamp/issues">issue tracker</a>.</p>
     </div>
   </div>
 </section>
@@ -282,15 +282,15 @@
 <section id="roadmap">
   <div class="wrap">
     <h2><span class="hash">#</span>Roadmap</h2>
-    <p class="lead">One goal governs everything: <b>every skin ever built for the original Winamp — and every skin yet to be built — rendered correctly by the original Maki VM.</b> The full audited plan lives in the <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">qtWasabi OKF bundle</a>; this is the shape of it, in priority order.</p>
+    <p class="lead">One goal governs everything: <b>every skin ever built for the original Winamp, and every skin yet to be built, rendered correctly by the original Maki VM.</b> The full audited plan lives in the <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">qtWasabi OKF bundle</a>; this is the shape of it, in priority order.</p>
     <div class="road">
-      <div class="step"><h3>Maki object model &amp; dispatch</h3><p>Restore the typed class layer around the original interpreter — real object construction, per-class method dispatch, safe arity. The keystone every other workstream leans on.</p></div>
-      <div class="step"><h3>Full event surface</h3><p>Every mouse, keyboard, and lifecycle event a real Wasabi engine dispatches reaches the skin's scripts — so script-driven skins are fully interactive with zero engine-side imitations.</p></div>
+      <div class="step"><h3>Maki object model &amp; dispatch</h3><p>Restore the typed class layer around the original interpreter: real object construction, per-class method dispatch, safe arity. The keystone every other workstream leans on.</p></div>
+      <div class="step"><h3>Full event surface</h3><p>Every mouse, keyboard, and lifecycle event a real Wasabi engine dispatches reaches the skin's scripts, so script-driven skins are fully interactive with zero engine-side imitations.</p></div>
       <div class="step"><h3>One state store + real Config service</h3><p>Skins' own scripts decide drawer, tab, and preference state; the last hardcoded assumptions about specific skins get deleted.</p></div>
       <div class="step"><h3>Containers, layouts &amp; window sizing</h3><p>Multi-window and multi-layout skins (shade modes included) navigate exactly as authored; window size comes from the skin's scripts, not heuristics.</p></div>
-      <div class="step"><h3>Geometry &amp; paint fidelity</h3><p>The reference frame-constraint model, exact coordinate semantics, exact font metrics and color/gamma theming — pixel-for-pixel against original Winamp.</p></div>
+      <div class="step"><h3>Geometry &amp; paint fidelity</h3><p>The reference frame-constraint model, exact coordinate semantics, exact font metrics and color/gamma theming, verified pixel-for-pixel against original Winamp.</p></div>
       <div class="step"><h3>Widget completion</h3><p>Every placeholder becomes a faithful interpretation: scrollbars, popup menus, dropdowns, text entry, animated layers, the full media library.</p></div>
-      <div class="step dim"><h3>Corpus verification — continuous</h3><p>Real skins are the regression suite, diffed against their authors' own reference screenshots. Today <b>1 of 5</b> corpus skins renders pixel-faithfully (WinampModernPP); the other four are open engine bugs, tracked per skin in <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">corpus-status</a>. This gate never closes.</p></div>
+      <div class="step dim"><h3>Corpus verification, continuous</h3><p>Real skins are the regression suite, diffed against their authors' own reference screenshots. Today <b>1 of 5</b> corpus skins renders pixel-faithfully (WinampModernPP); the other four are open engine bugs, tracked per skin in <a href="https://github.com/qtWasabi/qtWasabi/blob/main/okf/fidelity/corpus-status.md">corpus-status</a>. This gate never closes.</p></div>
     </div>
   </div>
 </section>
@@ -300,9 +300,9 @@
     <h2><span class="hash">#</span>Licensing &amp; provenance</h2>
     <p class="lead">Everything we wrote is MIT. What we didn't write, we don't ship.</p>
     <div class="grid">
-      <div class="card"><h3>qtamp &amp; qtWasabi — MIT</h3><p>Both repositories (<a href="https://github.com/qtamp/qtamp">qtamp/qtamp</a>, <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi/qtWasabi</a>) are MIT-licensed, with <b>no Winamp-licensed source in the repos or their git history</b>.</p></div>
-      <div class="card"><h3>Original Winamp files — user-supplied</h3><p>A small set of original Wasabi engine sources is required at <b>build time</b>. The installer fetches them from the public <b>archive.org</b> mirror of the official source release — into a gitignored directory, on your machine, under the <b>Winamp Collaborative License v1.0</b> (§3 permits using covered works you do not convey). They are never redistributed by us — the same pattern emulators use for a user-supplied BIOS.</p></div>
-      <div class="card"><h3>Showcase skins — MIT</h3><p>Every skin shown on this site is MIT-licensed by its author and forked with credit into <a href="https://github.com/qtamp">github.com/qtamp</a> (only titlebar branding strings changed). We deliberately don't showcase proprietary Nullsoft skins.</p></div>
+      <div class="card"><h3>qtamp &amp; qtWasabi: MIT</h3><p>Both repositories (<a href="https://github.com/qtamp/qtamp">qtamp/qtamp</a>, <a href="https://github.com/qtWasabi/qtWasabi">qtWasabi/qtWasabi</a>) are MIT-licensed, with <b>no Winamp-licensed source in the repos or their git history</b>.</p></div>
+      <div class="card"><h3>Original Winamp files: user-supplied</h3><p>A small set of original Wasabi engine sources is required at <b>build time</b>. The installer fetches them from the public <b>archive.org</b> mirror of the official source release into a gitignored directory, on your machine, under the <b>Winamp Collaborative License v1.0</b> (§3 permits using covered works you do not convey). They are never redistributed by us. It is the same pattern emulators use for a user-supplied BIOS.</p></div>
+      <div class="card"><h3>Showcase skins: MIT</h3><p>Every skin shown on this site is MIT-licensed by its author and forked with credit into <a href="https://github.com/qtamp">github.com/qtamp</a> (only titlebar branding strings changed). We deliberately don't showcase proprietary Nullsoft skins.</p></div>
     </div>
   </div>
 </section>
@@ -315,13 +315,13 @@
       <div class="person">
         <img src="https://avatars.githubusercontent.com/u/1328108?v=4" alt="lord3nd3r's avatar" loading="lazy">
         <div class="who"><b>Kristopher Craig (lord3nd3r)</b>
-          <span>Author of <a href="https://github.com/lord3nd3r/winamp-linux">winamp-linux</a>, the native Qt port qtamp grew out of — and the person who said <a href="https://github.com/lord3nd3r/winamp-linux/issues/3">“make the Modern skins work”</a>. This project is that issue, taken seriously.</span>
+          <span>Author of <a href="https://github.com/lord3nd3r/winamp-linux">winamp-linux</a>, the native Qt port qtamp grew out of, and the person who said <a href="https://github.com/lord3nd3r/winamp-linux/issues/3">“make the Modern skins work”</a>. This project is that issue, taken seriously.</span>
         </div>
       </div>
       <div class="person">
         <img src="https://avatars.githubusercontent.com/u/38136789?v=4" alt="0x5066's avatar" loading="lazy">
         <div class="who"><b>Eris Lund (0x5066)</b>
-          <span>Skin author and Wasabi archaeologist whose <b>MIT-licensed skins</b> (<a href="https://github.com/0x5066/WinampModernPP">WinampModernPP</a> and family) make an honest showcase possible — and whose skinning documentation keeps this knowledge alive.</span>
+          <span>Skin author and Wasabi archaeologist whose <b>MIT-licensed skins</b> (<a href="https://github.com/0x5066/WinampModernPP">WinampModernPP</a> and family) make an honest showcase possible, and whose skinning documentation keeps this knowledge alive.</span>
         </div>
       </div>
     </div>
@@ -329,14 +329,14 @@
     <div class="people" style="margin-top:18px">
       <div class="person">
         <img src="https://avatars.githubusercontent.com/u/26285351?v=4" alt="kleberbaum's avatar" loading="lazy">
-        <div class="who"><b>Florian Kleber (kleberbaum)</b><span>qtWasabi engine &amp; qtamp — <a href="https://github.com/kleberbaum">github.com/kleberbaum</a></span></div>
+        <div class="who"><b>Florian Kleber (kleberbaum)</b><span>qtWasabi engine &amp; qtamp · <a href="https://github.com/kleberbaum">github.com/kleberbaum</a></span></div>
       </div>
       <div class="person">
         <img src="https://avatars.githubusercontent.com/u/1328108?v=4" alt="lord3nd3r's avatar" loading="lazy">
-        <div class="who"><b>Kristopher Craig (lord3nd3r)</b><span>winamp-linux foundation — <a href="https://github.com/lord3nd3r">github.com/lord3nd3r</a></span></div>
+        <div class="who"><b>Kristopher Craig (lord3nd3r)</b><span>winamp-linux foundation · <a href="https://github.com/lord3nd3r">github.com/lord3nd3r</a></span></div>
       </div>
     </div>
-    <p class="note">Want your face here? The engine has one rule — <b>fix the engine, never the skin</b> — and a very honest <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">list of what's left to do</a>. Bugs, skins that render wrong, and PRs: <a href="https://github.com/qtamp/qtamp/issues">github.com/qtamp/qtamp/issues</a>.</p>
+    <p class="note">Want your face here? The engine has one rule, <b>fix the engine, never the skin</b>, and a very honest <a href="https://github.com/qtWasabi/qtWasabi/tree/main/okf">list of what's left to do</a>. Bugs, skins that render wrong, and PRs: <a href="https://github.com/qtamp/qtamp/issues">github.com/qtamp/qtamp/issues</a>.</p>
   </div>
 </section>
 
