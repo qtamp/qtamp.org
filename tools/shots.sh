@@ -55,3 +55,14 @@ echo "  playlist-editor"
 
 cp "$tmp"/*.png "$SITE/"
 echo "== written to $SITE"
+
+# Browsers keep /assets/* for a day (site/_headers), so a new image only
+# shows when its URL changes: stamp today's date into the ?v= of every
+# image rendered here.
+INDEX="$(dirname "$(dirname "$SITE")")/index.html"
+STAMP="$(date +%Y%m%d)"
+for f in "$tmp"/*.png; do
+  n="$(basename "$f" .png)"
+  sed -i -E "s#assets/shots/$n\.png(\?v=[0-9]+)?#assets/shots/$n.png?v=$STAMP#g" "$INDEX"
+done
+echo "== image URLs in $INDEX stamped ?v=$STAMP"
